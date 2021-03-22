@@ -25,7 +25,7 @@ max_i_quarter_of_hour = 3
 max_hour = 24
 
 
-def increase_index_quarter_of_hour(hour, i_quarter_of_hour):
+def increase_index_quarter_of_house(hour, i_quarter_of_hour):
     i_quarter_of_hour += 1
     if i_quarter_of_hour > max_i_quarter_of_hour:
         i_quarter_of_hour = 0
@@ -52,7 +52,7 @@ def convert_input_to_output(start_hour, start_minute, duration_sec, typing_num, 
                                      typing_num_added=typing_num_per_sec * remain_in_this_quarter_sec,
                                      mouse_move_added=mouse_move_per_sec * remain_in_this_quarter_sec)
             duration_sec -= remain_in_this_quarter_sec
-        start_hour, i_quarter_of_hour = increase_index_quarter_of_hour(start_hour, i_quarter_of_hour)
+        start_hour, i_quarter_of_hour = increase_index_quarter_of_house(start_hour, i_quarter_of_hour)
 
     while duration_sec > 0:
         delta_sec = interval_sec if duration_sec > interval_sec else duration_sec
@@ -60,7 +60,7 @@ def convert_input_to_output(start_hour, start_minute, duration_sec, typing_num, 
                                  typing_num_added=typing_num_per_sec * delta_sec,
                                  mouse_move_added=mouse_move_per_sec * delta_sec)
         duration_sec -= delta_sec
-        start_hour, i_quarter_of_hour = increase_index_quarter_of_hour(start_hour, i_quarter_of_hour)
+        start_hour, i_quarter_of_hour = increase_index_quarter_of_house(start_hour, i_quarter_of_hour)
 
 
 def output_to_csv():
